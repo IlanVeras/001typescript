@@ -1,2 +1,5 @@
 "use strict";
-console.log('Teste');
+const video = document.querySelector('#videoDoc');
+if (video instanceof HTMLVideoElement) {
+    console.log(video);
+}
