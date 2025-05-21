@@ -1,3 +1,4 @@
+"use strict";
 let link = document.getElementById('origamid');
 //apesar do código abaixo funcionar, vemos que o TypeScript revela erros, pois caso o valor retornado do getElementById fosse null ele não poderia ser executado
 // link.href = link.href.replace('http://', 'https//')

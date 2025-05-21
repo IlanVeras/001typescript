@@ -1,3 +1,4 @@
+"use strict";
 class Produto {
     nome;
     constructor(nome) {
