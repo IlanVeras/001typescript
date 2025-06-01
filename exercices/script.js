@@ -77,15 +77,15 @@ function contantFunction(valor) {
     return () => valor;
 }
 //ex11
-function findById(lista, id) {
-    let resposta;
-    for (let i = 0, n = lista.length; i < n; i++) {
-        if (lista[i].id == id) {
-            resposta = lista[i];
-        }
-    }
-    return resposta;
-}
+// function findById<T extends {id: number}>(lista: T[], id:number): T | undefined{
+//     let resposta;
+//     for(let i=0, n=lista.length; i < n; i++){
+//         if(lista[i].id == id){
+//             resposta = lista[i]
+//         }
+//     }
+//     return resposta
+// }
 const users = [{ id: 1, nome: "Ana" }, { id: 2, nome: "Bruno" }];
 // console.log(findById(users, 2))
 //ex 12
@@ -97,3 +97,138 @@ const users = [{ id: 1, nome: "Ana" }, { id: 2, nome: "Bruno" }];
 //   { tipo: 'fruta', nome: 'Banana' },
 //   { tipo: 'legume', nome: 'Cenoura' }
 // ]
+function findById(lista, id) {
+    let r;
+    console.log(lista);
+    console.log(id);
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (lista[i].id === id) {
+            r = lista[i];
+            return r;
+        }
+    }
+    return;
+}
+// console.log(findById(users,1))
+function mergeObjects(a, b) {
+    return { ...a, ...b };
+}
+const pessoa = { nome: "Carlos" };
+const idade = { idade: 30 };
+// console.log(mergeObjects(pessoa,idade))
+function getUniqueItems(lista) {
+    console.log(lista);
+    let arrRes = new Set();
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (!arrRes.has(lista[i])) {
+            arrRes.add(lista[i]);
+        }
+    }
+    return Array.from(arrRes);
+}
+// console.log(getUniqueItems([5, 7, 7, 5, 1, 9, 9, 9, 8]))
+function pluck(lista, prop) {
+    let arrRes = [];
+    lista.forEach(element => {
+        arrRes.push(element[prop]);
+    });
+    return arrRes;
+}
+const pessoas = [{ nome: "João" }, { nome: "Maria" }];
+// console.log(pluck(pessoas, 'nome'))
+function getFirst(lista) {
+    return lista[0];
+}
+// console.log(getFirst([10, 20, 30]))
+function swap(lista, i, j) {
+    console.log(lista[0]);
+    let v1 = lista[i];
+    let v2 = lista[j];
+    lista[i] = v2;
+    lista[j] = v1;
+    return lista;
+}
+// console.log(swap([1, 2, 3], 1, 2))
+function repeatList(lista) {
+    for (let i = 0, n = lista.length; i < n; i++) {
+        lista.push(lista[i]);
+    }
+    return lista;
+}
+// console.log(repeatList(["x", "y"]))
+function removeLast(lista) {
+    lista.pop();
+    return lista;
+}
+// console.log(removeLast([1,2,3,4]))
+function firstN(lista, n) {
+    let arrRes = [];
+    if (lista.length < n) {
+        n = lista.length;
+    }
+    for (let i = 0; i < n; i++) {
+        arrRes.push(lista[i]);
+    }
+    return arrRes;
+}
+// console.log(firstN(["a", "b", "c", "d"], 1))
+function contains(lista, item) {
+    if (lista.includes(item)) {
+        return true;
+    }
+    return false;
+}
+// console.log(contains([1, 2, 3], 7))
+function cloneList(lista) {
+    return [...lista];
+}
+// console.log(cloneList([5, 6, 7]))
+function doubleNumbers(lista) {
+    //defina o tipo
+    // let arrRes: T[] = []
+    // for(let i=0, n=lista.length; i < n; i++){
+    //     arrRes.push((lista[i] * 2) as T)
+    // }
+    const arrRes = lista.map((item) => item * 2);
+    return arrRes;
+}
+// console.log(doubleNumbers([1,2,3]))
+function concatStrings(lista) {
+    let newStr = '';
+    for (let i = 0, n = lista.length; i < n; i++) {
+        newStr += `${lista[i]},`;
+    }
+    return newStr;
+}
+// console.log(concatStrings(["maçã", "banana", "uva"]))
+//FAZER COM REDUCE
+function sumList(lista) {
+    let total = 0;
+    for (let i = 0, n = lista.length; i < n; i++) {
+        total += lista[i];
+    }
+    // const total = lista.reduce((resultado, valor) => {
+    //     return (resultado + valor)
+    // }, 0)
+    return total;
+}
+// console.log(sumList([10, 20, 30]))
+function capitalizeList(lista) {
+    // let arrRes: T[] = []
+    // for(let i=0, n=lista.length; i < n; i++){
+    //     arrRes.push((lista[i].toUpperCase()) as T)
+    // }
+    const arrRes = lista.map((item) => item.toUpperCase());
+    return arrRes;
+}
+// console.log(capitalizeList(["oi", "tudo", "bem"]))
+function countGreaterThan(lista, ref) {
+    let total = 0;
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (lista[i] > ref) {
+            total += 1;
+        }
+    }
+    return total;
+}
+// console.log(countGreaterThan([5, 10, 15, 2, 14], 1))
