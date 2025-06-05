@@ -296,3 +296,63 @@ function countGreaterThan<T extends number>(lista: T[], ref: number): number{
 }
 
 // console.log(countGreaterThan([5, 10, 15, 2, 14], 1))
+
+function tripleNumbers<T extends number>(lista: T[]) : number[]{
+    const novaLista = []
+    for(let i=0, n=lista.length; i < n; i++){
+        let valorTriplicado = lista[i] * 3
+        novaLista.push(valorTriplicado)
+    }
+    return novaLista
+}
+
+// console.log(tripleNumbers([1,2,3]))
+
+function capilizeFirstLetter<T extends string>(lista: T[]) : string[]{
+    const novaLista = lista.map(item => String(item).charAt(0).toUpperCase() + String(item).slice(1))
+    return novaLista
+}
+
+// console.log(capilizeFirstLetter(['abelha','burro','caramujo']))
+
+function allGreaterThan<T extends number>(lista: T[], ref:number): boolean{
+    // let res: number = 0
+    // for(let i:number=0, n:number=lista.length; i < n; i++){
+    //     if(ref > lista[i]){
+    //         res += 1
+    //     }
+    // }
+    // if(res === 0){
+    //     return true
+    // }
+    // return false
+    return lista.every(item => item > ref)
+}
+
+// console.log(allGreaterThan([10, 20, 30], 5)) 
+// console.log(allGreaterThan([10, 2, 30], 5)) 
+
+
+function joinItems<T>(lista: T[]): string{
+    return lista.join(',')
+}
+
+// console.log(joinItems(['a','b', 'c']))
+// console.log(joinItems([1, 2, 3])  )
+
+function removeItemThere<T>(lista: T[], valor: T): T[]{
+    let novaLista = []
+    for(let i:number=0,n:number=lista.length; i<n; i++){
+        if(lista[i] !== valor){
+            novaLista.push(lista[i])
+        }
+    }
+    return novaLista
+}
+
+// console.log(removeItem([1, 2, 3, 2], 2))
+// console.log(removeItem(["a", "b", "a"], "a"))
+
+
+
+//return lista.every(item => item > ref)
