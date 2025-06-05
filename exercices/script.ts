@@ -356,3 +356,60 @@ function removeItemThere<T>(lista: T[], valor: T): T[]{
 
 
 //return lista.every(item => item > ref)
+
+////////////////////////////////////////////////
+
+function filterGreaterThan<T extends number>(lista: T[], ref:number): T[]{
+    return lista.filter(item => item > ref)
+}
+
+// console.log(filterGreaterThan([1, 5, 8, 2], 4))
+
+function countLetters<T extends string>(lista:T[]):number{
+    //juntar tudo
+    let newString = lista.join('')
+    //separar letra por letra e apagar espaços vazios
+    let newLista = newString.split('').filter(item => item !== ' ')
+    //retornar tamanho da nova lista
+    return newLista.length
+}
+
+// console.log(countLetters(["oi", "tudo bem"]))
+
+
+function replaceAll<T>(lista: T[],antigo: T,novo: T): T[]{
+    let newArr: T[] = []
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(lista[i] !== antigo){
+            newArr.push(lista[i])
+        }else{
+            newArr.push(novo)
+        }
+    }
+    return newArr
+}
+
+// console.log(replaceAll(["a", "b", "a"], "a", "x"))
+
+function sumIfGreater<T extends number>(lista: T[], ref: number): number{
+    let count:number = 0
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(lista[i] > ref){
+            count += lista[i]
+        }
+    }
+    return count
+}
+
+// console.log(sumIfGreater([1, 10, 5, 3], 4))
+
+function firstMatch<T>(lista: T[], ref: T): T | undefined {
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(lista[i] === ref){
+            return lista[i]
+        }
+    }
+    return
+}
+
+// console.log(firstMatch(["casa", "carro", "casa"], "casa"))

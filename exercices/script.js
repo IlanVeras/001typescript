@@ -278,3 +278,49 @@ function removeItemThere(lista, valor) {
 // console.log(removeItem([1, 2, 3, 2], 2))
 // console.log(removeItem(["a", "b", "a"], "a"))
 //return lista.every(item => item > ref)
+////////////////////////////////////////////////
+function filterGreaterThan(lista, ref) {
+    return lista.filter(item => item > ref);
+}
+// console.log(filterGreaterThan([1, 5, 8, 2], 4))
+function countLetters(lista) {
+    //juntar tudo
+    let newString = lista.join('');
+    //separar letra por letra e apagar espaços vazios
+    let newLista = newString.split('').filter(item => item !== ' ');
+    //retornar tamanho da nova lista
+    return newLista.length;
+}
+// console.log(countLetters(["oi", "tudo bem"]))
+function replaceAll(lista, antigo, novo) {
+    let newArr = [];
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (lista[i] !== antigo) {
+            newArr.push(lista[i]);
+        }
+        else {
+            newArr.push(novo);
+        }
+    }
+    return newArr;
+}
+// console.log(replaceAll(["a", "b", "a"], "a", "x"))
+function sumIfGreater(lista, ref) {
+    let count = 0;
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (lista[i] > ref) {
+            count += lista[i];
+        }
+    }
+    return count;
+}
+// console.log(sumIfGreater([1, 10, 5, 3], 4))
+function firstMatch(lista, ref) {
+    for (let i = 0, n = lista.length; i < n; i++) {
+        if (lista[i] === ref) {
+            return lista[i];
+        }
+    }
+    return;
+}
+// console.log(firstMatch(["casa", "carro", "casa"], "casa"))
