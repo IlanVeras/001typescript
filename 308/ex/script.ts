@@ -44,12 +44,12 @@ async function fetchData(url: string) {
 
     if (count === 0) {
       data.map(
-        (curso: any) =>
+        (curso: Curso) =>
           (body.innerHTML += `
             <h1>${curso.nome}</h1>
             <p>Horas: ${curso.horas}</p>
             <ul>
-            ${curso.tags.map((tag: any) => `<li>${tag}</li>`)}</ul>
+            ${curso.tags.map((tag: string) => `<li>${tag}</li>`)}</ul>
             `)
       );
     }
