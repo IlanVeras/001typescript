@@ -413,3 +413,211 @@ function firstMatch<T>(lista: T[], ref: T): T | undefined {
 }
 
 // console.log(firstMatch(["casa", "carro", "casa"], "casa"))
+function cleanAndCapitalizeWords(lista: string[]): string[]
+function cleanAndCapitalizeWords<T extends string>(lista: T[]): string[]{
+    let novoArr = []
+    //passar palavra por palavra 
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        //transformar palavra em array
+        let arrPalavra = lista[i].split('')
+        //limpar array de espaços vazios
+        let arrPalavraLimpo = arrPalavra.filter((letra) => letra !== ' ')
+        //transformar array em string
+        let newString = arrPalavraLimpo.join('')
+        //capitalizar primeira letra
+        let n = newString.charAt(0).toUpperCase() + newString.slice(1)
+        //adicionar string ao novoArr
+        novoArr.push(n)
+    }
+    return novoArr
+}
+
+// console.log(cleanAndCapitalizeWords(["  banana", "maçã ", "  uva "]))
+
+function sumDigitsInList(lista: number[]):number[]
+function sumDigitsInList<T extends number>(lista: T[]): number[]{
+    let newArr = []
+    //passe por cada numero
+    for(let i:number = 0, n:number=lista.length; i< n; i++){
+        //transforme esses numeros em uma string
+        let numberStr = String(lista[i])
+        //transforme a string em um array e converta cada item para Number
+        let numberArr = (numberStr.split('')).map(item => Number(item))
+        //faça um reduce dessa string
+        let numberSum = numberArr.reduce((accumulator,current) => (
+            accumulator + current
+        ),0)
+        //adicione esse valor ao novo array
+        newArr.push(numberSum)
+    }
+    return newArr
+}
+
+// console.log(sumDigitsInList([12, 305, 7]))
+
+function findLongestString(lista: string[]):string
+function findLongestString<T extends string>(lista: T[]): string{
+    //variável que guarda a maior string
+    let longest:string = '';
+    //passe por todas as palavras
+    for(let i:number=0, n:number=lista.length; i < n; i++){
+        //se for a primeira vez que o for está sendo executado
+        if(i === 0){
+            //a string mais longa é a primeira do array
+            longest = lista[0]
+        }else{
+            //mas se a palavra mais longa até agora tiver um tamanho menor do que a palvra do for atual
+            if(longest.length < lista[i].length){
+                //atualize a variável da palavra mais longa
+                longest = lista[i]
+            }
+        }
+    }
+    return longest
+}
+
+
+// console.log(findLongestString(["uva", "banana", "melancia"]))
+
+function averageGreaterThan(lista: number[], ref: number):boolean
+function averageGreaterThan<T extends number>(lista: T[], ref: number): boolean{
+    //valor que guarda a soma de todos os numeros do array
+    let numberSum: number = lista.reduce((acc,cur) => (
+        acc + cur
+    ),0)
+    //valor que guarda a média da soma de todos os itens da lista
+    let media: number = numberSum / lista.length
+    //se a media for maior que a referência
+    if(media > ref){
+        //retornar verdadeiro
+        return true
+    }
+    //por padrão retorne false
+    return false
+}
+
+// console.log(averageGreaterThan([10, 20, 30], 15))
+
+function countWordsWithLetter(lista: string[], ref: string):number
+function countWordsWithLetter<T extends string>(lista: T[], ref: string) : number{
+    //setar contador
+    let count: number = 0
+    //passar por cada palavra
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        //se a palavra atual incluir o valor de referência
+        if(lista[i].includes(ref)){
+            //adicionar + 1 ao contador
+            count += 1
+        }
+    }
+    return count
+}
+
+// console.log(countWordsWithLetter(["maçã", "banana", "uva", "leite"], "a"))
+
+
+// console.log(removeDuplicatedWords(["uva", "banana", "uva", "maçã", "banana"]) )
+
+
+function organizeByLetter<T extends string>(lista: T[]){
+    const resultado: any = {}
+
+    for(let i:number=0, n:number=lista.length; i < n; i++){
+        const inicial = lista[i][0]
+        resultado[inicial] = lista[i]
+    }
+
+    return resultado
+}
+
+
+// console.log(organizeByLetter(["ana", "alice", "bruno", "carla"]))
+
+function countLetters2<T extends string>(lista: T[]){
+    const resultado: any = {}
+
+    for(const letra of lista){
+        resultado[letra] = (resultado[letra] | 0) + 1
+    }
+    return resultado
+}
+
+// console.log(countLetters2(["a", 'a', "e", "i", 'i', 'i', "o"]))
+
+
+function removeDuplicatedWords<T extends string>(lista: T[]):T[]{
+    let newList: T[] = []
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(!newList.includes(lista[i])){
+            newList.push(lista[i])
+        }
+    }
+    return newList
+}
+
+
+
+function groupByFirstLetter<T extends string>(lista: T[]): Record<string, string[]>{
+    const resultado: any = {}
+
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        const inicial = lista[i][0].toLocaleLowerCase()
+        if(!resultado[inicial]){
+            resultado[inicial] = []
+        }
+        resultado[inicial].push(lista[i].replace(" ", ""))
+    }
+
+    return resultado
+}
+
+// console.log(groupByFirstLetter(["Uva", "uva", "abacate", "Ameixa", "banana"]))
+
+function areAllNumbersEven<T extends number>(lista: T[]): boolean{
+    let contador = 0
+    lista.forEach(element => {
+        if(element % 2 !== 0){
+            contador += 1
+        }
+    });
+    if(contador === 0){
+        return true
+    }
+    return false
+}
+
+// console.log(areAllNumbersEven([2, 4, 6]))
+// console.log(areAllNumbersEven([1, 2, 3]))
+
+function multiplyMatching<T extends number>(lista: T[], ref: T): number[]{
+    let newArr = []
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(lista[i] % ref === 0){
+            newArr.push(lista[i] * 2)
+        }else{
+            newArr.push(lista[i])
+        }
+    }
+    return newArr
+}
+
+// console.log(multiplyMatching([10, 12, 15], 5))
+//: {word: string, vowels: number}
+function getWordsWithVowelCount<T extends string>(lista: T[]): {word: string, vowels: number}[]{
+    let newArr: any = []
+    for(let i:number=0,n:number=lista.length;i < n; i++){
+        let totalVowls = 0
+        let wordArr = lista[i].toLocaleLowerCase().replace(" ", "").split('')
+        for(let i:number=0,n:number=wordArr.length; i < n; i++){
+            if(wordArr[i] === 'a' || wordArr[i] === 'e' || wordArr[i] === 'i' || wordArr[i] === 'o' || wordArr[i] === 'u'){
+                totalVowls += 1
+            }
+        }
+        newArr.push({word: lista[i], vowels:totalVowls})
+    }
+
+    return newArr
+}
+
+
+console.log(getWordsWithVowelCount(["uva", "banana", "pêssego"]))
