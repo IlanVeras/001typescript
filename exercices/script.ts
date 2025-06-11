@@ -620,4 +620,143 @@ function getWordsWithVowelCount<T extends string>(lista: T[]): {word: string, vo
 }
 
 
-console.log(getWordsWithVowelCount(["uva", "banana", "pêssego"]))
+// console.log(getWordsWithVowelCount(["uva", "banana", "pêssego"]))
+
+// function groupAndCountBy<T, K extends keyof>(lista:T[], key:K){
+//     console.log(produtos[0][key])
+// }
+
+// const produtos = [
+//   { nome: "Notebook", categoria: "Eletrônico" },
+//   { nome: "Celular", categoria: "Eletrônico" },
+//   { nome: "Bola", categoria: "Esporte" },
+//   { nome: "Tênis", categoria: "Esporte" },
+//   { nome: "Fone", categoria: "Eletrônico" },
+// ];
+
+// groupAndCountBy(produtos, "categoria");
+
+
+// function filteredLetterRepeat<T extends string>(lista:T[]){
+//     for(let i:number=0,n:number=lista.length;i<n;i++){
+        
+//     }
+// }
+
+function hasRepeatedLetters(word:string): boolean{
+    let letters = new Set()
+    let wordArr = word.split('')
+    for(let i:number=0,n:number=wordArr.length; i < n; i++){
+        if(!letters.has(wordArr[i])){
+            letters.add(wordArr[i])
+        }else{
+            return true
+        }
+    }
+    return false
+}
+
+// console.log(hasRepeatedLetters('banana'))
+// console.log(hasRepeatedLetters('anjo'))
+
+
+function filterRepeated(lista:string[]):string[]{
+    let ansArr = []
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        if(hasRepeatedLetters(lista[i])){
+            ansArr.push(lista[i])
+        }
+    }
+    return ansArr
+}
+
+// console.log(filterRepeated(["uva", "banana", "melão", "abacate"]))
+
+function sortWords(lista:string[]):string[]{
+    return lista.sort()
+}
+
+// console.log(sortWords(["banana", "uva", "abacate"]))
+
+
+function filteredLetterRepeat<T extends string>(lista:T[]): string[]{
+    //unção que retorna se uma string tem ou não letras repetidas
+    function doesItRepeatLetter(str:string):boolean{
+        let ansArr = new Set()
+        let wordArr = str.split('')
+        for(let i:number=0,n:number=wordArr.length; i < n; i++){
+            if(!ansArr.has(wordArr[i])){
+                ansArr.add(wordArr[i])
+            }else{
+                return true
+            }
+        }
+        return false
+    }
+    let ansArr = []
+    for(let i:number=0,n:number=lista.length; i < n; i++){
+        //se a palavra repetir letras sera adcionada no array de resposta
+        if(doesItRepeatLetter(lista[i])){
+            ansArr.push(lista[i])
+        }
+    }
+    //retorna-se um array de strings com os elementos organizados alfabeticamente
+    return ansArr.sort()
+}
+
+// console.log(filteredLetterRepeat(["banana", "uva", "melão", "abacate", "kiwi", "laranja"]))
+
+function onlyAlphabeticOrderWords<T extends string>(lista:T[]): string[]{
+    let result = []
+    for(let i=0,n=lista.length; i < n; i++){
+        let word = lista[i]
+        let isOrdered = true
+        for(let j=1; j < word.length; j++){
+            if(word[j] < word[j - 1]){
+                isOrdered = false
+                break
+            }
+        }
+
+        if(isOrdered){
+            result.push(word)
+        }
+    }
+    return result
+}
+
+// console.log(onlyAlphabeticOrderWords(["amor", "aabc", "carro", "xyz", "bac"]))
+
+function sameStartEndLetterWords<T extends string>(list:T[]):string[]{
+    let result: string[] = []
+    for(let i:number=0,n:number=list.length; i < n; i++){
+        let word = list[i].toLocaleLowerCase().split('')
+        let firstLetter = word[0]
+        let lastLetter = word[word.length -1]
+        if(firstLetter === lastLetter){
+            result.push(list[i])
+        }
+    }
+    return result
+}
+
+// console.log(sameStartEndLetterWords(["arara", "abacaxi", "asa", "Bolo", "anA", "ovo"]))
+
+
+function smallerBigger<T extends number>(list:T[]){
+    let s:number = 0
+    let b:number = 0
+    for(let i=0,n=list.length; i < n; i++){
+        if(i === 0){
+            s = list[i]
+            b = list[i]
+        }if(list[i] > b){
+            b = list[i]
+        }if(list[i] < s){
+            s = list[i]
+        }
+    }
+    return `Maior: ${b}, Menor: ${s}`
+}
+
+console.log(smallerBigger([8, 8, 16, 8, 7, 3, 4, 9]))
