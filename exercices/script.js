@@ -4,7 +4,24 @@ function getLast(lista) {
     //retorna o ultimo item utilizando o tamanho da lista subtraído de um
     return lista[lista.length - 1];
 }
-const l1 = ['Elphaba', 'Glinda', 'Emerald City', 'Oz', 'Munchkin', 'Elphaba', 'Glinda', 'Emerald City', 'Oz', 'Munchkin', 'Elphaba', 'Oz', 'Elphaba', 'Glinda', 'Munchkin', 'Munchkin'];
+const l1 = [
+    "Elphaba",
+    "Glinda",
+    "Emerald City",
+    "Oz",
+    "Munchkin",
+    "Elphaba",
+    "Glinda",
+    "Emerald City",
+    "Oz",
+    "Munchkin",
+    "Elphaba",
+    "Oz",
+    "Elphaba",
+    "Glinda",
+    "Munchkin",
+    "Munchkin",
+];
 // console.log(getLast(l1))
 //ex 02
 function toList(item) {
@@ -86,7 +103,10 @@ function contantFunction(valor) {
 //     }
 //     return resposta
 // }
-const users = [{ id: 1, nome: "Ana" }, { id: 2, nome: "Bruno" }];
+const users = [
+    { id: 1, nome: "Ana" },
+    { id: 2, nome: "Bruno" },
+];
 // console.log(findById(users, 2))
 //ex 12
 // function groupByProp<T, K extends keyof T>(lista: T[], prop: K): Record<string, T[]>{
@@ -129,7 +149,7 @@ function getUniqueItems(lista) {
 // console.log(getUniqueItems([5, 7, 7, 5, 1, 9, 9, 9, 8]))
 function pluck(lista, prop) {
     let arrRes = [];
-    lista.forEach(element => {
+    lista.forEach((element) => {
         arrRes.push(element[prop]);
     });
     return arrRes;
@@ -194,7 +214,7 @@ function doubleNumbers(lista) {
 }
 // console.log(doubleNumbers([1,2,3]))
 function concatStrings(lista) {
-    let newStr = '';
+    let newStr = "";
     for (let i = 0, n = lista.length; i < n; i++) {
         newStr += `${lista[i]},`;
     }
@@ -242,7 +262,7 @@ function tripleNumbers(lista) {
 }
 // console.log(tripleNumbers([1,2,3]))
 function capilizeFirstLetter(lista) {
-    const novaLista = lista.map(item => String(item).charAt(0).toUpperCase() + String(item).slice(1));
+    const novaLista = lista.map((item) => String(item).charAt(0).toUpperCase() + String(item).slice(1));
     return novaLista;
 }
 // console.log(capilizeFirstLetter(['abelha','burro','caramujo']))
@@ -257,12 +277,12 @@ function allGreaterThan(lista, ref) {
     //     return true
     // }
     // return false
-    return lista.every(item => item > ref);
+    return lista.every((item) => item > ref);
 }
-// console.log(allGreaterThan([10, 20, 30], 5)) 
-// console.log(allGreaterThan([10, 2, 30], 5)) 
+// console.log(allGreaterThan([10, 20, 30], 5))
+// console.log(allGreaterThan([10, 2, 30], 5))
 function joinItems(lista) {
-    return lista.join(',');
+    return lista.join(",");
 }
 // console.log(joinItems(['a','b', 'c']))
 // console.log(joinItems([1, 2, 3])  )
@@ -280,14 +300,14 @@ function removeItemThere(lista, valor) {
 //return lista.every(item => item > ref)
 ////////////////////////////////////////////////
 function filterGreaterThan(lista, ref) {
-    return lista.filter(item => item > ref);
+    return lista.filter((item) => item > ref);
 }
 // console.log(filterGreaterThan([1, 5, 8, 2], 4))
 function countLetters(lista) {
     //juntar tudo
-    let newString = lista.join('');
+    let newString = lista.join("");
     //separar letra por letra e apagar espaços vazios
-    let newLista = newString.split('').filter(item => item !== ' ');
+    let newLista = newString.split("").filter((item) => item !== " ");
     //retornar tamanho da nova lista
     return newLista.length;
 }
@@ -325,14 +345,14 @@ function firstMatch(lista, ref) {
 }
 function cleanAndCapitalizeWords(lista) {
     let novoArr = [];
-    //passar palavra por palavra 
+    //passar palavra por palavra
     for (let i = 0, n = lista.length; i < n; i++) {
         //transformar palavra em array
-        let arrPalavra = lista[i].split('');
+        let arrPalavra = lista[i].split("");
         //limpar array de espaços vazios
-        let arrPalavraLimpo = arrPalavra.filter((letra) => letra !== ' ');
+        let arrPalavraLimpo = arrPalavra.filter((letra) => letra !== " ");
         //transformar array em string
-        let newString = arrPalavraLimpo.join('');
+        let newString = arrPalavraLimpo.join("");
         //capitalizar primeira letra
         let n = newString.charAt(0).toUpperCase() + newString.slice(1);
         //adicionar string ao novoArr
@@ -347,9 +367,9 @@ function sumDigitsInList(lista) {
         //transforme esses numeros em uma string
         let numberStr = String(lista[i]);
         //transforme a string em um array e converta cada item para Number
-        let numberArr = (numberStr.split('')).map(item => Number(item));
+        let numberArr = numberStr.split("").map((item) => Number(item));
         //faça um reduce dessa string
-        let numberSum = numberArr.reduce((accumulator, current) => (accumulator + current), 0);
+        let numberSum = numberArr.reduce((accumulator, current) => accumulator + current, 0);
         //adicione esse valor ao novo array
         newArr.push(numberSum);
     }
@@ -357,7 +377,7 @@ function sumDigitsInList(lista) {
 }
 function findLongestString(lista) {
     //variável que guarda a maior string
-    let longest = '';
+    let longest = "";
     //passe por todas as palavras
     for (let i = 0, n = lista.length; i < n; i++) {
         //se for a primeira vez que o for está sendo executado
@@ -377,7 +397,7 @@ function findLongestString(lista) {
 }
 function averageGreaterThan(lista, ref) {
     //valor que guarda a soma de todos os numeros do array
-    let numberSum = lista.reduce((acc, cur) => (acc + cur), 0);
+    let numberSum = lista.reduce((acc, cur) => acc + cur, 0);
     //valor que guarda a média da soma de todos os itens da lista
     let media = numberSum / lista.length;
     //se a media for maior que a referência
@@ -443,7 +463,7 @@ function groupByFirstLetter(lista) {
 // console.log(groupByFirstLetter(["Uva", "uva", "abacate", "Ameixa", "banana"]))
 function areAllNumbersEven(lista) {
     let contador = 0;
-    lista.forEach(element => {
+    lista.forEach((element) => {
         if (element % 2 !== 0) {
             contador += 1;
         }
@@ -473,9 +493,13 @@ function getWordsWithVowelCount(lista) {
     let newArr = [];
     for (let i = 0, n = lista.length; i < n; i++) {
         let totalVowls = 0;
-        let wordArr = lista[i].toLocaleLowerCase().replace(" ", "").split('');
+        let wordArr = lista[i].toLocaleLowerCase().replace(" ", "").split("");
         for (let i = 0, n = wordArr.length; i < n; i++) {
-            if (wordArr[i] === 'a' || wordArr[i] === 'e' || wordArr[i] === 'i' || wordArr[i] === 'o' || wordArr[i] === 'u') {
+            if (wordArr[i] === "a" ||
+                wordArr[i] === "e" ||
+                wordArr[i] === "i" ||
+                wordArr[i] === "o" ||
+                wordArr[i] === "u") {
                 totalVowls += 1;
             }
         }
@@ -501,7 +525,7 @@ function getWordsWithVowelCount(lista) {
 // }
 function hasRepeatedLetters(word) {
     let letters = new Set();
-    let wordArr = word.split('');
+    let wordArr = word.split("");
     for (let i = 0, n = wordArr.length; i < n; i++) {
         if (!letters.has(wordArr[i])) {
             letters.add(wordArr[i]);
@@ -532,7 +556,7 @@ function filteredLetterRepeat(lista) {
     //unção que retorna se uma string tem ou não letras repetidas
     function doesItRepeatLetter(str) {
         let ansArr = new Set();
-        let wordArr = str.split('');
+        let wordArr = str.split("");
         for (let i = 0, n = wordArr.length; i < n; i++) {
             if (!ansArr.has(wordArr[i])) {
                 ansArr.add(wordArr[i]);
@@ -575,7 +599,7 @@ function onlyAlphabeticOrderWords(lista) {
 function sameStartEndLetterWords(list) {
     let result = [];
     for (let i = 0, n = list.length; i < n; i++) {
-        let word = list[i].toLocaleLowerCase().split('');
+        let word = list[i].toLocaleLowerCase().split("");
         let firstLetter = word[0];
         let lastLetter = word[word.length - 1];
         if (firstLetter === lastLetter) {
@@ -602,4 +626,57 @@ function smallerBigger(list) {
     }
     return `Maior: ${b}, Menor: ${s}`;
 }
-console.log(smallerBigger([8, 8, 16, 8, 7, 3, 4, 9]));
+// console.log(smallerBigger([8, 8, 16, 8, 7, 3, 4, 9]))
+function emOrdemVogais(list) {
+    //função interna que retorna se as vogais de uma palavra estão ou não na ordem correta
+    function isOrderedVowels(vowels) {
+        return vowels.join("") === "aeiou";
+    }
+    let result = [];
+    //percorrer cada palavra
+    for (let i = 0, n = list.length; i < n; i++) {
+        //v da palavra atual
+        let word = list[i];
+        //v do array da palavra aatual com todos os elementos em miúsculo
+        let wordArr = word.toLowerCase().split("");
+        //v com Set que guarda apenas as vogais
+        let wordOnlyVowels = [];
+        //percorrer cada letra
+        for (let j = 0, m = wordArr.length; j < m; j++) {
+            //v da letra
+            let letter = wordArr[j];
+            //v da condição de vogal
+            let conditionForVowels = letter === "a" ||
+                letter === "e" ||
+                letter === "i" ||
+                letter === "o" ||
+                letter === "u";
+            //se a vogal ainda não existir no Set e obedecer a v de condição => adicionar vogal
+            if (!wordOnlyVowels.includes(letter) && conditionForVowels) {
+                wordOnlyVowels.push(letter);
+            }
+        }
+        //se as vogais estiverem em ordem correta adicionar elas ao array de resultados
+        if (isOrderedVowels(wordOnlyVowels)) {
+            result.push(word);
+        }
+    }
+    return result;
+}
+// console.log(emOrdemVogais(["aeiou", "abecidofu", "educa", "revolucao", "aouie"]))
+// console.log(isOrderedVowels(["a", "e", "i", "o", "u"]));
+// nos números de posição impar
+//
+function compareArrays(list1, list2) {
+    function isNumberArr(arr) {
+        return arr.every((element) => typeof element !== "string");
+    }
+    if (isNumberArr(list1) === true && isNumberArr(list2) === true) {
+        console.log("Os dois arrays são de números");
+        //verificar se os arrays tem os mesmos elementos
+    }
+    else {
+        console.log('Os dois arrays são de tipos diferentes');
+    }
+}
+compareArrays([1, 2, 3, 4], ["a", "b", "c"]);
